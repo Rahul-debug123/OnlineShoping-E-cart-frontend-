@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useCallback} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch,Redirect } from 'react-router-dom';
 import Login from "../login/Login";
 import Cookies from 'universal-cookie';
@@ -73,9 +73,10 @@ class User extends Component {
                     }
                     else {
                         this.setState({signin_error:"successful"});
-                        cookies.set('isAuth',true,{ path: '/' });
                         cookies.set('user_token', res.user, { path: '/' });
                         console.log(cookies.get('user_token'));
+                        this.props.TokenChange();
+                        
                     }
                     this.setState({button_disable:false});
             });
@@ -134,7 +135,6 @@ class User extends Component {
                             Signin_error={this.state.signin_error}
                             Signup_error={this.state.signup_error}
                             Button_disable={this.state.button_disable}/>
-                <div>{JSON.stringify(this.state)}</div>
             </div>
                     
         )
