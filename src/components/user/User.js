@@ -21,7 +21,9 @@ class User extends Component {
             contact_number:'',
             button_disable:false,
             signin_error:'',
-            signup_error:''
+            signup_error:'',
+            signin_error_type:'',
+            signup_error_type:''
         }
     }
     onFirstNameChange=(event)=>{
@@ -54,7 +56,8 @@ class User extends Component {
     onSignIn=(event)=>{
         const {login_email,login_password}=this.state;
         if(!login_email || !login_password ){
-            this.setState({signin_error:"* is the required field"});
+            this.setState({signin_error:"* is the required field",
+                            signin_error_type:"error"});
         }
         else {
             const requestMetadata = {
@@ -64,17 +67,19 @@ class User extends Component {
                                         'password':login_password})
             };
             this.setState({button_disable:true});
-            this.setState({signin_error:"connecting to server......."});
+            this.setState({signin_error:"connecting to server.......",
+                            signin_error_type:"info"});
             fetch(signin_url, requestMetadata)
             .then(res => res.json())
             .then(res =>{
                     if(res.error){
-                        this.setState({signin_error:JSON.stringify(res.error)});
+                        this.setState({signin_error:JSON.stringify(res.error),
+                                            signin_error_type:"error"});
                     }
                     else {
-                        this.setState({signin_error:"successful"});
+                        this.setState({signin_error:"successful",
+                                        signin_error_type:"success"});
                         cookies.set('user_token', res.user, { path: '/' });
-                        console.log(cookies.get('user_token'));
                         this.props.TokenChange();
                         
                     }
@@ -85,10 +90,12 @@ class User extends Component {
     onSignUp=(event)=>{
             const {first_name,last_name,password,repassword,email,gender,contact_number}=this.state;
             if(!first_name || !password || !email || !gender || !contact_number ){
-                this.setState({signup_error:"* is the required field"});
+                this.setState({signup_error:"* is the required field",
+                                signup_error_type:"error"});
             }
             else if(password!=repassword){
-                this.setState({signup_error:"Password and confirm password do not match"});
+                this.setState({signup_error:"Password and confirm password do not match",
+                                signup_error_type:"error"});
             }
             else {
                 const requestMetadata = {
@@ -102,15 +109,18 @@ class User extends Component {
                                             "contact_number":contact_number})
                 };
                 this.setState({button_disable:true});
-                this.setState({signup_error:"connecting to server.......",});
+                this.setState({signup_error:"connecting to server.......",
+                                signup_error_type:"info"});
                 fetch(signup_url,requestMetadata)
                 .then(res=>res.json())
                 .then(res=>{
                     if(res.error){
-                        this.setState({signup_error:res.error});
+                        this.setState({signup_error:res.error,
+                                        signup_error_type:"error"});
                     }
                     else {
-                        this.setState({signup_error:"Successfully registered!"})
+                        this.setState({signup_error:"Successfully registered!",
+                                        signup_error_type:"success"})
                     }
                     this.setState({button_disable:false});
                 })
@@ -134,6 +144,8 @@ class User extends Component {
                             SignUp={this.onSignUp}
                             Signin_error={this.state.signin_error}
                             Signup_error={this.state.signup_error}
+                            Signin_error_type={this.state.signin_error_type}
+                            Signup_error_type={this.state.signup_error_type}
                             Button_disable={this.state.button_disable}/>
             </div>
                     

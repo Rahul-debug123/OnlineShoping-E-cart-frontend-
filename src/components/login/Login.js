@@ -26,11 +26,7 @@ return (
                                 <input type="submit" className="button" value="Sign In" onClick={props.SignIn} disabled={props.Button_disable}/>
                             </div>
 
-                            <div className={
-                                (props.Signin_error=='')? '':
-                                (props.Signin_error=='successful')?'success':
-                                (props.Signin_error=='connecting to server.......')?'info':'error'
-                            }>
+                            <div className={props.Signin_error_type}>
                                 {props.Signin_error}
                             </div>
 
@@ -95,11 +91,7 @@ return (
                             <div className="group">
                                     <input type="submit" className="button" value="Sign Up" onClick={props.SignUp} disabled={props.Button_disable}/>
                             </div>
-                            <div className={
-                                (props.Signup_error=='')? '':
-                                (props.Signup_error=='Successfully registered!')?'success':
-                                (props.Signup_error=='connecting to server.......')?'info':'error'
-                            }>{props.Signup_error}</div>
+                            <div className={props.Signup_error_type}> {props.Signup_error}</div>
                             <div className="hr"></div>
                         </div>
                     </div>
