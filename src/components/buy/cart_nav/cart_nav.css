@@ -1,0 +1,27 @@
+.box {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .box select {
+    background-color:white;
+    margin:10px;
+    color: grey;
+    padding: 10px;
+    padding-left: 20px;
+    width: 150px;
+    height:40px;
+    font-size: 15px;
+  }
+
+  
+  .box select option {
+    background-color:white;
+    padding: 30px;
+  }
+
+input {
+    padding-left:10px;
+    height:40px;
+    width: 300px;
+}

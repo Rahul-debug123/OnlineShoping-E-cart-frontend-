@@ -1,7 +1,5 @@
 import React,{Component} from 'react'
-import User from './components/user/User';
 import NavBar from './components/navbar/navbar';
-import About from  './components/about/about'
 import Cookies from 'universal-cookie';
 import {
   BrowserRouter as Router,
@@ -34,7 +32,8 @@ class App extends Component {
       };
 
   render (){
-    if(this.state.user_token && !this.state.isAuth){
+    if((this.state.user_token && !this.state.isAuth)||
+        (!this.state.user_token && this.state.isAuth)){
       const requestMetadata = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,16 +53,13 @@ class App extends Component {
           }
         });
     }
-
+    // <User TokenChange={this.onTokenChange}/>
     return(
       <div className="App">
         <Router>
-        <NavBar status={this.state} options={[["Home","/"],["About","/about"],["Contact","/contact"]]}/>
-          <Switch>
-          <Route exact path="/login" component={()=>{
-            return this.state.isAuth? <Redirect to="/"/>: <User TokenChange={this.onTokenChange}/>
-          }}/>
-          </Switch>
+        <NavBar status={this.state} 
+                options={[["Home","/"],["About","/about"],["Contact","/contact"]]}
+                TokenChange={this.onTokenChange}/>
         </Router>
       <div>{JSON.stringify(this.state)}</div>
     </div>
