@@ -5,7 +5,7 @@ How to run this frontend part:
   `git clone URL`
 2) Install the dependencies
    `npm install`
-3) Edit the url.js file to your backend domain.
+3) Edit the src/url.js file to your backend domain.
 4) Run the program
     `npm start`
 
