@@ -1,7 +1,7 @@
 import React,{useState,useeffect} from 'react';
 import Cookies from 'universal-cookie';
 import User from '../user/User';
-import About from  '../about/about';
+import Home from  '../home/home';
 import Cart_nav from '../buy/cart_nav/cart_nav';
 import MyOrders from '../myorders/myorders';
 import './navbar.css';
@@ -50,22 +50,19 @@ function Navbar(props){
                                 <User TokenChange={onTokenChange}>{setActive_option('')}</User>
             }}/>
             <Route exact path="/" component={()=>{
-                return 0;
+                return <Home/>
             }}/>
-            <Route exact path="/about" component={()=>{
-                return <About>{setActive_option("About")}</About>;
-            }}/>
-            <Route exact path="/contact" component={()=>{
-                return <About>{setActive_option("Contact")}</About>;
+            <Route exact path="/available" component={()=>{
+                return <Cart_nav Bye={false}>{setActive_option("Available products")}</Cart_nav>;
             }}/>
             <Route exact path="/cart" component={()=>{
-                return <Cart_nav UserId={props.UserId}/>
+                return isAuth?<Cart_nav  Bye={true} UserId={props.UserId}>{setActive_option("Cart")}</Cart_nav>:
+                            <Redirect puch to="/login">{alert("Login Required to See this content")} {setActive_option("")}</Redirect>
             }}/>
             <Route exact path="/myorders" component={()=>{
-                return <MyOrders UserId={props.UserId}/>
-            }}/>
-            <Route exact path="/cart" component={()=>{
-                return <MyOrders UserId={props.UserId}/>
+                return isAuth?<MyOrders UserId={props.UserId}>{setActive_option("Myorders")}</MyOrders>:
+                        <Redirect puch to="/login">{alert("Login Required to See this content")} {setActive_option("")}</Redirect>
+
             }}/>
         </Switch>
         </div>

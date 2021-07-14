@@ -1,6 +1,7 @@
 import React from 'react';
+import { main_url } from '../../../url';
 
-const image_pre="http://localhost:9000";
+const image_pre=main_url;
 
 function Cart(props){
 return(
@@ -19,9 +20,13 @@ return(
         <p className="f6 lh-copy measure mt2 mid-gray">
         {props.Description}
         </p>
-        <div className="bt pa3">
-        <a className="tc w-100 f6 lm3 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue" onClick={()=>props.AddElement(props.PId,props.Name,props.Price)}>Add to cart</a>
-        </div>
+        {
+            props.Bye?<div className="bt pa3">
+            <a className="tc w-100 f6 lm3 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue" onClick={()=>props.AddElement(props.PId,props.Name,props.Price)}>Add to cart</a>
+            </div>:
+            <div></div>
+        }
+        
     </div>
     </article>
    </div>)

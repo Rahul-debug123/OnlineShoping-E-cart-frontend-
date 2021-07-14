@@ -4,11 +4,12 @@ import "./cart_nav.css";
 import Scroll from '../../scroll/scroll';
 import Basket from '../basket/basket';
 import { byName,byPrice } from './compare';
+import { main_url } from '../../../url';
 
 
 const cartitems=[];
 const dic={};
-const products_url="http://localhost:9000/products";
+const products_url=main_url+"/products";
 let category_count=[];
 
 function Cart_nav(props){
@@ -129,6 +130,7 @@ function Cart_nav(props){
                             Description={description}
                             PId={pid}
                             AddElement={onAddElement}
+                            Bye={props.Bye}
                             />
                     })
                 }
@@ -138,10 +140,12 @@ function Cart_nav(props){
             {/* this is for selected items */}
 
             <div className="basket">
-                <Basket CartItems={dic}
+                {props.Bye? <Basket CartItems={dic}
                         QuantityIncrease={onQuantityIncrease}
                         QuantityDecrease={onQuantityDecrease}
-                        UserId={props.UserId}/>
+                        UserId={props.UserId}/>:
+                        <div></div>}
+                
                
             </div>
         </div>

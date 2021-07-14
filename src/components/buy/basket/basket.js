@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './basket.css';
 import order_placed from '../../../images/animation/tenor.gif'
+import { main_url } from '../../../url';
 
-
-const order_url="http://localhost:9000/order"
+const order_url=main_url+"/order"
 
 const request={userid:'',details:'',time:'',date:'',delivary_address:''};
 let total_cost=0;

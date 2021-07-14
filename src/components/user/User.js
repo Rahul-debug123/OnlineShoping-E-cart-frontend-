@@ -2,9 +2,10 @@ import React, {Component, useCallback} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch,Redirect } from 'react-router-dom';
 import Login from "../login/Login";
 import Cookies from 'universal-cookie';
+import { main_url } from '../../url';
 const cookies=new Cookies();
-const signin_url="http://localhost:9000/login";
-const signup_url="http://localhost:9000/signup";
+const signin_url=main_url+"/login";
+const signup_url=main_url+"/signup";
 
 class User extends Component {
     constructor(){

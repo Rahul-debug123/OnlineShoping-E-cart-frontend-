@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import NavBar from './components/navbar/navbar';
 import Cookies from 'universal-cookie';
+import { main_url } from './url';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,7 +10,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-const tokenVerify_url="http://localhost:9000/verifytoken"
+const tokenVerify_url=main_url+"/verifytoken"
 const cookies=new Cookies();
 
 
@@ -58,7 +59,7 @@ class App extends Component {
       <div className="App">
         <Router>
         <NavBar status={this.state} 
-                options={[["Home","/"],["About","/about"],["Contact","/contact"],["Myorders","/myorders"],["Cart","/cart"]]}
+                options={[["Home","/"],["Available products","/available"],["Myorders","/myorders"],["Cart","/cart"]]}
                 TokenChange={this.onTokenChange}
                 UserId={this.state.id}/>
         </Router>

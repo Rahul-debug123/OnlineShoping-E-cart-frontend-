@@ -2,8 +2,9 @@ import React,{useState,useEffect} from 'react';
 import './myorders.css';
 import Scroll from '../scroll/scroll';
 import Slip from './slip/slip';
+import { main_url } from '../../url';
 
-const myorders_url="http://localhost:9000/myorders";
+const myorders_url=main_url+"/myorders";
 function MyOrders(props){
     const [order_details,Setorder_details]=useState([]);
     const [active_order,Setactive_order]=useState({});
