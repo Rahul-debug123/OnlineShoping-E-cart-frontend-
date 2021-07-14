@@ -1,0 +1,48 @@
+
+.orders{
+    float:left;
+    background-color: white;
+    width: 72%;
+}
+
+
+.orders table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .orders th {
+    padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+  }
+  .orders  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .orders tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+  .details {
+    float:right;
+    width:25%;
+    padding-right: 30px;
+  }
+
+  .link{
+    background-color: rgb(230, 145, 117);
+    text-decoration:blue;
+}
+.link:hover{
+    background-color:white;
+}
+.link:active{
+  background-color: yellow;
+  border: black;
+}

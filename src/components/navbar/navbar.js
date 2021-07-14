@@ -2,7 +2,8 @@ import React,{useState,useeffect} from 'react';
 import Cookies from 'universal-cookie';
 import User from '../user/User';
 import About from  '../about/about';
-import Cart_nav from '../buy/cart_nav/cart_nav'
+import Cart_nav from '../buy/cart_nav/cart_nav';
+import MyOrders from '../myorders/myorders';
 import './navbar.css';
 import {
     BrowserRouter as Router,
@@ -58,7 +59,13 @@ function Navbar(props){
                 return <About>{setActive_option("Contact")}</About>;
             }}/>
             <Route exact path="/cart" component={()=>{
-                return <Cart_nav />
+                return <Cart_nav UserId={props.UserId}/>
+            }}/>
+            <Route exact path="/myorders" component={()=>{
+                return <MyOrders UserId={props.UserId}/>
+            }}/>
+            <Route exact path="/cart" component={()=>{
+                return <MyOrders UserId={props.UserId}/>
             }}/>
         </Switch>
         </div>

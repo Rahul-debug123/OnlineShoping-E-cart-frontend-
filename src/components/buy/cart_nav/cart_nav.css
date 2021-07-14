@@ -20,8 +20,21 @@
     padding: 30px;
   }
 
-input {
+.search {
     padding-left:10px;
     height:40px;
     width: 300px;
+}
+
+.products{
+  float:left;
+  background-color: red;
+  height:800px;
+  width:70%;
+}
+.basket{
+  float:right;
+  margin-right: 20px;
+  height:800px;
+  width: 25%;
 }

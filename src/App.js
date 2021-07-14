@@ -20,7 +20,7 @@ class App extends Component {
       isAuth:false,
       first_name:'',
       isAdmin:'',
-      id:'',
+      id:0,
       user_token:'',
     }
   }
@@ -58,10 +58,10 @@ class App extends Component {
       <div className="App">
         <Router>
         <NavBar status={this.state} 
-                options={[["Home","/"],["About","/about"],["Contact","/contact"]]}
-                TokenChange={this.onTokenChange}/>
+                options={[["Home","/"],["About","/about"],["Contact","/contact"],["Myorders","/myorders"],["Cart","/cart"]]}
+                TokenChange={this.onTokenChange}
+                UserId={this.state.id}/>
         </Router>
-      <div>{JSON.stringify(this.state)}</div>
     </div>
     )
   }
