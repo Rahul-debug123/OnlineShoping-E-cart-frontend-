@@ -9,4 +9,4 @@ How to run this frontend part:
 4) Run the program
     npm start
 
-Note- This programe will run properly only, when you have both OnlineShoping-E-cart-frontend- and OnlineShoping-E-cart-backend- file.
+Note- This programe will run properly only, when you have both OnlineShoping-E-cart-frontend- and OnlineShoping-E-cart-backend- files.
