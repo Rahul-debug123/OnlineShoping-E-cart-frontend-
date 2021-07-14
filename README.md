@@ -8,3 +8,5 @@ How to run this frontend part:
 3) edit the url.js file to your own back end domain.
 4) Run the program
     npm start
+
+Note- This programe will run properly only, when you have both OnlineShoping-E-cart-frontend- and OnlineShoping-E-cart-backend- file.
